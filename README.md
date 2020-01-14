@@ -25,6 +25,7 @@
 * kubectx - switch between clusters back and forth
 * kubens - switch between Kubernetes namespaces smoothly
 
+### Install kubectx and kubens
 ```
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
@@ -34,7 +35,7 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ### [kube-ps1](https://github.com/jonmosco/kube-ps1)
 * kube-ps1 - Kubernetes prompt info for bash
 
-Clone the repository
+### Install kube-ps1
 ```
 sudo git clone https://github.com/jonmosco/kube-ps1.git /opt/kube-ps1
 ```
@@ -58,7 +59,7 @@ You can check if your terminal font supports the Kubernetes symbol with this com
 ## Octent
 
 ### What is Octant 
-[Octant](https://github.com/vmware-tanzu/octant) is a web-based highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
+* [Octant](https://github.com/vmware-tanzu/octant) is a web-based highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
 
 ### Install Octant (Linux)
 ```
@@ -109,13 +110,23 @@ To do this, update your .bashrc and append the following line:
 and restart your shell.
 
 Verifying installation
-
-Run `kubectl plugin list`
+* Run `kubectl plugin list`
 
 Upgrading krew
+* It can be upgraded like a plugin by running the `kubectl krew upgrade` command.
 
-It can be upgraded like a plugin by running the `kubectl krew upgrade` command.
+## [kubectl tree](https://github.com/ahmetb/kubectl-tree)
+* kubectl plugin to browse Kubernetes object hierarchies as a tree
 
+### Install kubectl tree
+```
+kubectl krew install tree
+kubectl tree --help
+```
+
+```
+xx
+```
 *End of Section*
 
 
