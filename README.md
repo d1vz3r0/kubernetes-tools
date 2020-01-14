@@ -28,7 +28,7 @@
 * kubectx - switch between clusters back and forth
 * kubens - switch between Kubernetes namespaces smoothly
 
-### Install kubectx and kubens
+#### Install kubectx and kubens
 ```
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
@@ -38,7 +38,7 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 ### [kube-ps1](https://github.com/jonmosco/kube-ps1)
 * kube-ps1 - Kubernetes prompt info for bash
 
-### Install kube-ps1
+#### Install kube-ps1
 ```
 sudo git clone https://github.com/jonmosco/kube-ps1.git /opt/kube-ps1
 ```
@@ -58,6 +58,12 @@ and restart your shell.
 I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes symbol did not display correctly using my font.
 
 You can check if your terminal font supports the Kubernetes symbol with this command `echo $'\u2388'`
+
+### [kube-score](https://github.com/zegl/kube-score)
+
+#### What is kube-score
+* Kubernetes object analysis with recommendations for improved reliability and security
+
 
 ## Octent
 
@@ -134,9 +140,24 @@ kubectl krew install tree
 kubectl tree --help
 ```
 
+### Use kubectl tree
 ```
-xx
+kubectl tree KIND NAME [flags]
+kubectl tree deployment my-app
+kubectl tree kservice.v1.serving.knative.dev my-app
 ```
+
+```
+[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:sock-shop)]# kubectl tree deployments front-end
+NAMESPACE  NAME                                READY  REASON  AGE
+sock-shop  Deployment/front-end                -              46h
+sock-shop  └─ReplicaSet/front-end-5594987df6   -              46h
+sock-shop    ├─Pod/front-end-5594987df6-cg87t  True           46h
+sock-shop    ├─Pod/front-end-5594987df6-jl4pc  True           46h
+sock-shop    ├─Pod/front-end-5594987df6-wg5zg  True           46h
+sock-shop    └─Pod/front-end-5594987df6-xfdws  True           46h
+```
+
 *End of Section*
 
 
