@@ -15,6 +15,9 @@
   * What is Octent
   * Install Octent
   * Start Octent
+* krew
+  * What is krew
+  * Install krew (linux)
 
 ## Kubernetes Command Line Tools 
 
@@ -38,10 +41,7 @@ sudo git clone https://github.com/jonmosco/kube-ps1.git /opt/kube-ps1
 
 Source the kube-ps1.sh in your ~/.bashrc
 
-```
-cd 
-vi .bashrc
-```
+To do this, update your .bashrc and append the following lines:
 
 ```
 KUBE_PS1_SYMBOL_ENABLE=false
@@ -49,9 +49,7 @@ source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
 ```
 
-```
-. .bashrc
-```
+and restart your shell.
 
 I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes symbol did not display correctly using my font.
 
@@ -83,6 +81,11 @@ OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
 Open this URL link : `http://<Public IPv4>:8900`
 
 ## [krew](https://github.com/kubernetes-sigs/krew)
+
+### What is krew
+* krew is a tool that makes it easy to use kubectl [plugins](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/). 
+* krew helps you discover plugins, install and manage them on your machine. 
+* It is similar to tools like apt, dnf or brew. Today, over 70 kubectl plugins are available on krew.
 
 ### Install krew (Linux) 
 
