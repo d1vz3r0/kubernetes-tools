@@ -70,8 +70,6 @@ You can check if your terminal font supports the Kubernetes symbol with this com
 cd ~/ && mkdir kube-score && cd kube-score
 curl -LO https://github.com/zegl/kube-score/releases/download/v1.4.0/kube-score_1.4.0_linux_amd64.tar.gz
 tar -xvf kube-score_1.4.0_linux_amd64.tar.gz
-chmod +x kube-score
-mv kube-score_1.4.0_linux_amd64 kube-score
 sudo mv ~/kube-score/kube-score /usr/local/bin
 ```
 
