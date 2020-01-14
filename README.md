@@ -11,6 +11,7 @@
   * kubectx
   * kubens
   * kube-ps1
+  * kube-score
 * Kubernetes Web Tools (Octent)
   * What is Octent
   * Install Octent
