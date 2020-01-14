@@ -11,13 +11,16 @@
   * kubectx
   * kubens
   * kube-ps1
-* Octent
+* Kubernetes Web Tools (Octent)
   * What is Octent
   * Install Octent
   * Start Octent
 * krew
   * What is krew
   * Install krew (linux)
+* kubectl tree (krew plugin)
+  * What is kubectl tree
+  * Install kubectl tree
 
 ## Kubernetes Command Line Tools 
 
