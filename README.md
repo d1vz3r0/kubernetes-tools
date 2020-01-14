@@ -82,6 +82,37 @@ OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
 
 Open this URL link : `http://<Public IPv4>:8900`
 
+## [krew](https://github.com/kubernetes-sigs/krew)
+
+### Install krew (Linux) 
+
+```
+(
+  set -x; cd "$(mktemp -d)" &&
+  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v0.3.3/krew.{tar.gz,yaml}" &&
+  tar zxvf krew.tar.gz &&
+  KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
+  "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
+  "$KREW" update
+)
+```
+
+Add $HOME/.krew/bin directory to your PATH environment variable. 
+
+To do this, update your .bashrc and append the following line:
+
+`export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"`
+
+and restart your shell.
+
+Verifying installation
+
+Run `kubectl plugin list`
+
+Upgrading krew
+
+It can be upgraded like a plugin by running the `kubectl krew upgrade` command.
+
 *End of Section*
 
 
