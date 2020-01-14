@@ -72,17 +72,24 @@ tar -xvf octant_0.9.1_Linux-64bit.tar.gz
 sudo mv ./octant_0.9.1_Linux-64bit/octant /usr/local/bin/octant
 ```
 
-### Start Octant
+### Start Octant (Remote Linux Instance)
+
+If local installed just run `octant -n <namespace>`
+
+If octant is installed on a remote Linux instance then follow instructions below.
 
 Obtain the external IP (Public IPv4) address of the Linux instance running Octant
 
+Update `.bashrc` will the following lines: 
 ```
 export OCTANT_ACCEPTED_HOSTS=<Public IPv4>
 export OCTANT_DISABLE_OPEN_BROWSER=1
 OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
 ```
 
-Open this URL link : `http://<Public IPv4>:8900`
+and restart your shell.
+
+Open this URL link to access Octant : `http://<Public IPv4>:8900`
 
 ## [krew](https://github.com/kubernetes-sigs/krew)
 
