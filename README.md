@@ -1,4 +1,4 @@
-# Useful Kubernetes Tools and Utilities 
+# Kubernetes Tools and Utilities 
 
 ![image](https://user-images.githubusercontent.com/18049790/43352583-0b37edda-9269-11e8-9695-1e8de81acb76.png)
 
@@ -64,6 +64,68 @@ You can check if your terminal font supports the Kubernetes symbol with this com
 #### What is kube-score
 * Kubernetes object analysis with recommendations for improved reliability and security
 
+#### Install kube-score
+```
+cd ~/ && mkdir kube-score && cd kube-score
+curl -LO https://github.com/zegl/kube-score/releases/download/v1.4.0/kube-score_1.4.0_linux_amd64
+chmod +x kube-score_1.4.0_linux_amd64
+mv kube-score_1.4.0_linux_amd64 kube-score
+sudo mv ~/kube-score/kube-score /usr/local/bin
+```
+
+```
+wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml
+kube-score score complete-demo.yaml
+```
+
+```
+extensions/v1beta1/Deployment carts in sock-shop                              💥
+    [WARNING] Stable version
+        · The apiVersion and kind extensions/v1beta1/Deployment is deprecated
+            It's recommended to use apps/v1 instead
+    [CRITICAL] Container Resources
+        · carts -> CPU limit is not set
+            Resource limits are recommended to avoid resource DDOS. Set resources.limits.cpu
+        · carts -> Memory limit is not set
+            Resource limits are recommended to avoid resource DDOS. Set resources.limits.memory
+        · carts -> CPU request is not set
+            Resource requests are recommended to make sure that the application can start and run without crashing. Set
+            resources.requests.cpu
+        · carts -> Memory request is not set
+            Resource requests are recommended to make sure that the application can start and run without crashing. Set
+            resources.requests.memory
+    [CRITICAL] Container Image Pull Policy
+        · carts -> ImagePullPolicy is not set to Always
+            It's recommended to always set the ImagePullPolicy to Always, to make sure that the imagePullSecrets are always correct, and
+            to always get the image you want.
+    [CRITICAL] Pod NetworkPolicy
+        · The pod does not have a matching network policy
+            Create a NetworkPolicy that targets this pod
+    [CRITICAL] Pod Probes
+        · Container is missing a readinessProbe
+            Without a readinessProbe Services will start sending traffic to this pod before it's ready
+        · Container is missing a livenessProbe
+            Without a livenessProbe kubelet can not restart the Pod if it has crashed
+    [CRITICAL] Container Security Context
+        · carts -> The container is privileged
+            Set securityContext.privileged to false
+        · carts -> The container running with a low group ID
+            A groupid above 10 000 is recommended to avoid conflicts with the host. Set securityContext.runAsGroup to a value > 10000
+...
+v1/Service carts in sock-shop                                                 ✅
+v1/Service carts-db in sock-shop                                              ✅
+v1/Service catalogue in sock-shop                                             ✅
+v1/Service catalogue-db in sock-shop                                          ✅
+v1/Service front-end in sock-shop                                             ✅
+v1/Service orders in sock-shop                                                ✅
+v1/Service orders-db in sock-shop                                             ✅
+v1/Service payment in sock-shop                                               ✅
+v1/Service queue-master in sock-shop                                          ✅
+v1/Service rabbitmq in sock-shop                                              ✅
+v1/Service shipping in sock-shop                                              ✅
+v1/Service user in sock-shop                                                  ✅
+v1/Service user-db in sock-shop                                               ✅
+```
 
 ## Octent
 
