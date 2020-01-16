@@ -16,6 +16,8 @@
   * What is Octent
   * Install Octent
   * Start Octent
+* Helm 3 
+  * Install Helm 3
 * kubectl Tools 
   * What is krew
   * Install krew (linux)
@@ -158,6 +160,19 @@ OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
 and restart your shell.
 
 Open this URL link to access Octant : `http://<Public IPv4>:8900`
+
+## Helm 3
+* [Helm](https://helm.sh/) is a package manager for Kubernetes
+
+### Install Helm 3
+
+```
+cd ~/ && mkdir helm-3 && cd helm-3
+wget https://get.helm.sh/helm-v3.0.2-linux-amd64.tar.gz
+tar -zxvf helm-v3.0.2-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
 
 ## kubectl Tools
 
