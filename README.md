@@ -154,8 +154,9 @@ Update `.bashrc` will the following lines:
 ```
 export OCTANT_ACCEPTED_HOSTS=<Public IPv4>
 export OCTANT_DISABLE_OPEN_BROWSER=1
-OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &
 ```
+
+`OCTANT_LISTENER_ADDR=0.0.0.0:8900 octant &`
 
 and restart your shell.
 
