@@ -144,7 +144,7 @@ sudo mv ./octant_0.12.1_Linux-64bit/octant /usr/local/bin/octant
 
 ### Start Octant (Remote Linux Instance)
 
-If local installed just run `octant -n <namespace>`
+If Octant is installed local, just run `octant -n <namespace>`
 
 If octant is installed on a remote Linux instance then follow instructions below.
 
