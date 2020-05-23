@@ -33,7 +33,6 @@
 
 #### Install kubectx and kubens
 ```
-cd ~/
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
@@ -44,7 +43,6 @@ sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 
 #### Install kube-ps1
 ```
-cd ~/
 sudo git clone https://github.com/jonmosco/kube-ps1.git /opt/kube-ps1
 ```
 
