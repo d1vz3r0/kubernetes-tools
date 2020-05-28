@@ -18,6 +18,8 @@
   * Start Octent
 * Helm 3 
   * Install Helm 3
+* Skaffold
+  * Install Skaffold
 * kubectl Tools 
   * What is krew
   * Install krew (linux)
@@ -174,6 +176,17 @@ wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
 tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
+
+## Skaffold
+* [Skaffold](https://skaffold.dev) is a Continuous Delivery capability for Kubernetes
+
+### Install Skaffold
+
+```
+cd ~/ && mkdir skaffold && cd skaffold
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+sudo install skaffold /usr/local/bin/
 ```
 
 ## kubectl Tools
