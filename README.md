@@ -139,9 +139,9 @@ v1/Service user-db in sock-shop                                               âœ
 ### Install Octant (Linux)
 ```
 cd ~/ && mkdir octant && cd octant
-curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.12.1/octant_0.12.1_Linux-64bit.tar.gz
-tar -xvf octant_0.12.1_Linux-64bit.tar.gz
-sudo mv ./octant_0.12.1_Linux-64bit/octant /usr/local/bin/octant
+curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.13.1/octant_0.13.1_Linux-64bit.tar.gz
+tar -xvf octant_0.13.1_Linux-64bit.tar.gz
+sudo mv ./octant_0.13.1_Linux-64bit/octant /usr/local/bin/octant
 ```
 
 ### Start Octant (Remote Linux Instance)
