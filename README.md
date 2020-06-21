@@ -53,9 +53,11 @@ Source the kube-ps1.sh in your ~/.bashrc
 To do this, update your .bashrc and append the following lines:
 
 ```
-KUBE_PS1_SYMBOL_ENABLE=false
-source /opt/kube-ps1/kube-ps1.sh
-PS1='[\u@\h \w $(kube_ps1)]\$ '
+cd ~
+echo "KUBE_PS1_SYMBOL_ENABLE=false" >> .bashrc
+echo "source /opt/kube-ps1/kube-ps1.sh" >> .bashrc
+echo "PS1='[\u@\h \w $(kube_ps1)]\$ '" >> .bashrc
+. .bashrc
 ```
 
 and restart your shell.
@@ -152,11 +154,15 @@ If octant is installed on a remote Linux instance then follow instructions below
 
 Obtain the external IP (Public IPv4) address of the Linux instance running Octant
 
+If following the microservices-metrics-chaos tutorial use this command 
+`doctl compute droplet list | awk 'FNR == 2 {print $3}'`
+
 Update `.bashrc` will the following lines: 
 ```
-export OCTANT_ACCEPTED_HOSTS=<Public IPv4>
-export OCTANT_DISABLE_OPEN_BROWSER=1
-export OCTANT_LISTENER_ADDR=0.0.0.0:8900
+cd ~
+echo "export OCTANT_ACCEPTED_HOSTS=<Public IPv4>" >> .bashrc
+echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> .bashrc
+echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> .bashrc
 ```
 
 `octant &`
