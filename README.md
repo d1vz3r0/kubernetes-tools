@@ -8,6 +8,7 @@
 
 ## Table of Contents
 * Kubernetes Command Line Tools
+  * kubectl
   * kubectx
   * kubens
   * kube-ps1
@@ -28,6 +29,14 @@
   * Install kubectl tree
 
 ## Kubernetes Command Line Tools 
+
+### Install kubectl
+```
+cd ~/ && mkdir kubectl && cd kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+```
 
 ### [kubectx & kubens](https://github.com/ahmetb/kubectx) 
 * kubectx - switch between clusters back and forth
