@@ -79,7 +79,8 @@ sudo mv ~/kube-score/kube-score /usr/local/bin
 ```
 
 ```
-wget https://raw.githubusercontent.com/jamesbuckett/Microservices-Observability-and-Chaos-on-Digital-Ocean/master/complete-demo.yaml
+wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/complete-demo.yaml
+
 kube-score score complete-demo.yaml
 ```
 
