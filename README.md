@@ -57,10 +57,9 @@ cd ~
 echo "KUBE_PS1_SYMBOL_ENABLE=false" >> .bashrc
 echo "source /opt/kube-ps1/kube-ps1.sh" >> .bashrc
 echo "PS1='[\u@\h \w $(kube_ps1)]\$ '" >> .bashrc
-. .bashrc
 ```
 
-and restart your shell.
+And resinitialize your shell with `. .bashrc`
 
 I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes symbol did not display correctly using my font.
 
