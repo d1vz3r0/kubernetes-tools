@@ -144,6 +144,12 @@ v1/Service user-db in sock-shop                                               âœ
 
 ## kubectl top
 
+`kubectl top` displays Resource (CPU/Memory/Storage) usage.
+
+`kubectl top` depends on [metrics-server](https://github.com/kubernetes-sigs/metrics-server)
+
+Horizontal Pod Autoscaler and Vertical Pod Autoscaler also depend on [metrics-server](https://github.com/kubernetes-sigs/metrics-server) for metrics to scale pods as required.
+
 `kubectl top` does not work out of the box on Docker Desktop on Windows
 
 Please follow these steps to enable `kubectl top` on Docker for Desktop on Windows
@@ -152,9 +158,34 @@ Please follow these steps to enable `kubectl top` on Docker for Desktop on Windo
 
 `kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml"`
 
+Wait a few minutes for metrics to become available.
+
+Change to a namespace with running pods.
+
 Test that `kubectl top` is working:
 * `kubectl top nodes`
+
+```
+[i725081@surface-2 ~ (docker-desktop:default)]$ kubectl top node
+NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+docker-desktop   815m         10%    2016Mi          15%
+```
+
 * `kubectl top pod`
+
+```
+[i725081@surface-2 ~ (docker-desktop:kube-system)]$ kubectl top pods
+NAME                                     CPU(cores)   MEMORY(bytes)
+coredns-5644d7b6d9-f8c2c                 11m          12Mi
+coredns-5644d7b6d9-fsrfh                 9m           11Mi
+etcd-docker-desktop                      56m          34Mi
+kube-apiserver-docker-desktop            227m         330Mi
+kube-controller-manager-docker-desktop   73m          40Mi
+kube-proxy-b9pgg                         2m           16Mi
+kube-scheduler-docker-desktop            5m           14Mi
+storage-provisioner                      10m          12Mi
+vpnkit-controller                        0m           20Mi
+```
 
 ## Kubernetes Web Tools
 
