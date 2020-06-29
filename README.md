@@ -219,9 +219,9 @@ If following the microservices-metrics-chaos tutorial use this command
 Update `.bashrc` will the following lines: 
 ```
 cd ~
-echo "export OCTANT_ACCEPTED_HOSTS=<Public IPv4>" >> .bashrc
-echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> .bashrc
-echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> .bashrc
+echo "export OCTANT_ACCEPTED_HOSTS=<Public IPv4>" >> ~/.bashrc
+echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
+echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
 ```
 
 `octant &`
