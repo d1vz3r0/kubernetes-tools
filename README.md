@@ -148,6 +148,11 @@ v1/Service user-db in sock-shop                                               âœ
 
 `kubectl top` depends on [metrics-server](https://github.com/kubernetes-sigs/metrics-server)
 
+Clarification between [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) and [metrics-server](https://github.com/kubernetes-sigs/metrics-server) 
+
+* kube-state-metrics - kube-state-metrics is a simple service that listens to the Kubernetes API server and generates metrics about the *state of the objects* 
+* metrics-server - metrics server is a scalable, efficient source of *container resource metrics* for Kubernetes built-in autoscaling pipelines.
+
 Horizontal Pod Autoscaler and Vertical Pod Autoscaler also depend on [metrics-server](https://github.com/kubernetes-sigs/metrics-server) for metrics to scale pods as required.
 
 `kubectl top` does not work out of the box on Docker Desktop on Windows
