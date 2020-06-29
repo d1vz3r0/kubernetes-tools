@@ -13,6 +13,7 @@
   * kubens
   * kube-ps1
   * kube-score
+* kubectl top
 * Kubernetes Web Tools
   * What is Octent
   * Install Octent
@@ -140,6 +141,20 @@ v1/Service shipping in sock-shop                                              �
 v1/Service user in sock-shop                                                  ✅
 v1/Service user-db in sock-shop                                               ✅
 ```
+
+## kubectl top
+
+`kubectl top` does not work out of the box on Docker Desktop on Windows
+
+Please follow these steps to enable `kubectl top` on Docker for Desktop on Windows
+
+`kubectl create namespace metrics-server`
+
+`kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml.yaml"`
+
+Test that `kubectl top` is working:
+* `kubectl top nodes`
+* `kubectl top pod`
 
 ## Kubernetes Web Tools
 
