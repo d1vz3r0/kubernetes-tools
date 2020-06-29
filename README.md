@@ -150,7 +150,7 @@ Please follow these steps to enable `kubectl top` on Docker for Desktop on Windo
 
 `kubectl create namespace metrics-server`
 
-`kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml.yaml"`
+`kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml"`
 
 Test that `kubectl top` is working:
 * `kubectl top nodes`
