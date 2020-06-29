@@ -68,7 +68,7 @@ source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
 ```
 
-And resinitialize your shell with `. .bashrc`
+And resinitialize your shell with `. ~/.bashrc`
 
 I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes symbol did not display correctly using my font.
 
