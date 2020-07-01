@@ -237,8 +237,8 @@ Open this URL link to access Octant : `http://<Public IPv4>:8900`
 
 ```
 cd ~/ && mkdir helm-3 && cd helm-3
-wget https://get.helm.sh/helm-v3.2.1-linux-amd64.tar.gz
-tar -zxvf helm-v3.2.1-linux-amd64.tar.gz
+wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
+tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/helm
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
