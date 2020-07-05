@@ -44,11 +44,13 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 * kubens - switch between Kubernetes namespaces smoothly
 
 #### Install kubectx and kubens
-```
-sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
-sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
-sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
-```
+
+`sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx`
+
+`sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx`
+
+`sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens`
+
 
 ### [kube-ps1](https://github.com/jonmosco/kube-ps1)
 * kube-ps1 - Kubernetes prompt info for bash
@@ -239,7 +241,7 @@ Open this URL link to access Octant : `http://<Public IPv4>:8900`
 cd ~/ && mkdir helm-3 && cd helm-3
 wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
 tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
-mv linux-amd64/helm /usr/local/bin/helm
+sudo mv linux-amd64/helm /usr/local/bin/helm
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
