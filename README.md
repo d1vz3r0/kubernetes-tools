@@ -34,9 +34,9 @@
 
 ## 1. Kubernetes Command Line Tools 
 
-### 1.1 What is `kubectl`
+### 1.1 What is kubectl?
 
-`kubectl` is a command line tool used to interact with the `digital-ocean-cluster` Kubernetes clusters.
+`kubectl` is a command line tool used to interact with anyKubernetes clusters.
 
 In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
 
@@ -105,9 +105,9 @@ sudo mv linux-amd64/helm /usr/local/bin/helm
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-## 3. kubectl top (similar to `top` or `htop` on Linux)
+## 3. kubectl top 
 
-### 3.1 What is kubectl top
+### 3.1 What is kubectl top? (Kubernetes version of Linux `top` or `htop`)
 
 `kubectl top` displays Resource (CPU/Memory/Storage) usage.
 
