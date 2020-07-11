@@ -7,27 +7,25 @@
 * Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only. 
 
 ## Table of Contents
-* 1. Kubernetes Command Line Tools
+
+1. Kubernetes Command Line Tools
   * 1.1 kubectl
   * 1.2 kubectx
   * 1.2 kubens
   * 1.3 kube-ps1
-* 2. Helm 3 
+2. Helm 3 
   * 2.1 Install Helm 3
-* 3. kubectl top
-* 4. Kubernetes Web Tools
-  * What is Octent
-  * Install Octent
-  * Start Octent
-* 5. Skaffold
-  * Install Skaffold
-* 6. kubectl Tools 
-  * What is krew
-  * Install krew (linux)
-* kubectl tree (krew plugin)
-  * What is kubectl tree
-  * Install kubectl tree
-* kube-score
+3. kubectl top
+4. Kubernetes Web Tools
+  * 4.1 What is Octent
+  * 4.2 Install Octent
+  * 4.3 Start Octent
+5. Skaffold
+  * 5.1 Install Skaffold
+6. kubectl Tools 
+  * 6.1 krew
+  * 6.2 kubectl tree (krew plugin)
+  * 6.3 kube-score
 
 ## 1. Kubernetes Command Line Tools 
 
