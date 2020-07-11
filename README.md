@@ -11,15 +11,15 @@
 1. Kubernetes Command Line Tools
   * 1.1 What is `kubectl`
   * 1.2 Install `kubectl`
-  * 1.3 kubectx
-  * 1.3 kubens
-  * 1.4 kube-ps1
+  * 1.3 `kubectx`
+  * 1.3 `kubens`
+  * 1.4 `kube-ps1`
 2. Helm 3 
   * 2.1 What is Helm?
   * 2.2 Install Helm 3
 3. kubectl top
-* 3.1 What is kubectl top
-* 3.1 Install kubectl top
+* 3.1 What is `kubectl top`
+* 3.1 Install `kubectl top`
 4. Kubernetes Web Tools
   * 4.1 What is Octant
   * 4.2 Install Octant
