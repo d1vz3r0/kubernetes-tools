@@ -33,6 +33,7 @@
 
 ### Install kubectl
 ```
+cd ~/ && rm -R ~/kubectl
 cd ~/ && mkdir kubectl && cd kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x ./kubectl
@@ -70,7 +71,7 @@ source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
 ```
 
-And resinitialize your shell with `. ~/.bashrc`
+And reinitialize your shell with `. ~/.bashrc`
 
 I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes symbol did not display correctly using my font.
 
@@ -201,6 +202,7 @@ vpnkit-controller                        0m           20Mi
 
 ### Install Octant (Linux)
 ```
+cd ~/ && rm -R ~/octant
 cd ~/ && mkdir octant && cd octant
 curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.13.1/octant_0.13.1_Linux-64bit.tar.gz
 tar -xvf octant_0.13.1_Linux-64bit.tar.gz
@@ -238,6 +240,7 @@ Open this URL link to access Octant : `http://<Public IPv4>:8900`
 ### Install Helm 3
 
 ```
+cd ~/ && rm -R ~/helm-3
 cd ~/ && mkdir helm-3 && cd helm-3
 wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
 tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
@@ -251,6 +254,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ### Install Skaffold
 
 ```
+cd ~/ && rm -R ~/skaffold
 cd ~/ && mkdir skaffold && cd skaffold
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 sudo install skaffold /usr/local/bin/
