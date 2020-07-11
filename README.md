@@ -89,7 +89,7 @@ sudo mv linux-amd64/helm /usr/local/bin/helm
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
-## 3. kubectl top
+## 3. kubectl top (similar to `top` or `htop` on Linux)
 
 `kubectl top` displays Resource (CPU/Memory/Storage) usage.
 
