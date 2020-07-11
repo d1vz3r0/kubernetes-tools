@@ -14,8 +14,11 @@
   * 1.2 kubens
   * 1.3 kube-ps1
 2. Helm 3 
-  * 2.1 Install Helm 3
+  * 2.1 What is Helm?
+  * 2.2 Install Helm 3
 3. kubectl top
+* 3.1 What is kubectl top
+* 3.1 Install kubectl top
 4. Kubernetes Web Tools
   * 4.1 What is Octant
   * 4.2 Install Octant
@@ -76,9 +79,11 @@ I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kuberne
 You can check if your terminal font supports the Kubernetes symbol with this command `echo $'\u2388'`
 
 ## 2. Helm 3
+
+### 2.1 What is Helm?
 * [Helm](https://helm.sh/) is a package manager for Kubernetes
 
-### 2.1 Install Helm 3
+### 2.2 Install Helm 3
 
 ```
 cd ~/ && rm -R ~/helm-3
@@ -90,6 +95,8 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
 
 ## 3. kubectl top (similar to `top` or `htop` on Linux)
+
+### 3.1 What is kubectl top
 
 `kubectl top` displays Resource (CPU/Memory/Storage) usage.
 
@@ -103,6 +110,8 @@ Clarification between [kube-state-metrics](https://github.com/kubernetes/kube-st
 Horizontal Pod Autoscaler and Vertical Pod Autoscaler also depend on [metrics-server](https://github.com/kubernetes-sigs/metrics-server) for metrics to scale pods as required.
 
 `kubectl top` does not work out of the box on Docker Desktop on Windows
+
+### 3.2 Install kubectl top
 
 Please follow these steps to enable `kubectl top` on Docker for Desktop on Windows
 
