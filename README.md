@@ -24,7 +24,8 @@
   * 4.2 Install Octant
   * 4.3 Start Octant
 5. Skaffold
-  * 5.1 Install Skaffold
+  * 5.1 What is Skaffold
+  * 5.2 Install Skaffold
 6. kubectl Tools 
   * 6.1 krew
   * 6.2 kubectl tree (krew plugin)
@@ -193,9 +194,11 @@ Open this URL link to access Octant : `http://<Public IPv4>:8900`
 ```
 
 ## 5. Skaffold
+
+### 5.1 What is Skaffold
 * [Skaffold](https://skaffold.dev) is a Continuous Delivery capability for Kubernetes
 
-### 5.1 Install Skaffold
+### 5.2 Install Skaffold
 
 ```
 cd ~/ && rm -R ~/skaffold
