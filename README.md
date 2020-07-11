@@ -26,7 +26,7 @@
 5. Skaffold
   * 5.1 What is Skaffold
   * 5.2 Install Skaffold
-6. kubectl Tools 
+6. Optional Kubernetes Tools 
   * 6.1 krew
   * 6.2 kubectl tree (krew plugin)
   * 6.3 kube-score
@@ -207,7 +207,7 @@ curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffo
 sudo install skaffold /usr/local/bin/
 ```
 
-## 6. kubectl Tools
+## 6. Optional Kubernetes Tools
 
 ### 6. 1 [krew](https://github.com/kubernetes-sigs/krew)
 
