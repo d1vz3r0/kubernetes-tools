@@ -7,31 +7,31 @@
 * Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only. 
 
 ## Table of Contents
-* Kubernetes Command Line Tools
-  * kubectl
-  * kubectx
-  * kubens
-  * kube-ps1
-  * kube-score
-* kubectl top
-* Kubernetes Web Tools
+* 1. Kubernetes Command Line Tools
+  * 1.1 kubectl
+  * 1.2 kubectx
+  * 1.2 kubens
+  * 1.3 kube-ps1
+* 2. Helm 3 
+  * 2.1 Install Helm 3
+* 3. kubectl top
+* 4. Kubernetes Web Tools
   * What is Octent
   * Install Octent
   * Start Octent
-* Helm 3 
-  * Install Helm 3
-* Skaffold
+* 5. Skaffold
   * Install Skaffold
-* kubectl Tools 
+* 6. kubectl Tools 
   * What is krew
   * Install krew (linux)
 * kubectl tree (krew plugin)
   * What is kubectl tree
   * Install kubectl tree
+* kube-score
 
-## Kubernetes Command Line Tools 
+## 1. Kubernetes Command Line Tools 
 
-### Install kubectl
+### 1.1 Install kubectl
 ```
 cd ~/ && rm -R ~/kubectl
 cd ~/ && mkdir kubectl && cd kubectl
@@ -40,7 +40,7 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-### [kubectx & kubens](https://github.com/ahmetb/kubectx) 
+### 1.2 [kubectx & kubens](https://github.com/ahmetb/kubectx) 
 * kubectx - switch between clusters back and forth
 * kubens - switch between Kubernetes namespaces smoothly
 
@@ -53,7 +53,7 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 `sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens`
 
 
-### [kube-ps1](https://github.com/jonmosco/kube-ps1)
+### 1.3 [kube-ps1](https://github.com/jonmosco/kube-ps1)
 * kube-ps1 - Kubernetes prompt info for bash
 
 #### Install kube-ps1
@@ -77,7 +77,186 @@ I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kuberne
 
 You can check if your terminal font supports the Kubernetes symbol with this command `echo $'\u2388'`
 
-### [kube-score](https://github.com/zegl/kube-score)
+## 2. Helm 3
+* [Helm](https://helm.sh/) is a package manager for Kubernetes
+
+### 2.1 Install Helm 3
+
+```
+cd ~/ && rm -R ~/helm-3
+cd ~/ && mkdir helm-3 && cd helm-3
+wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
+tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/helm
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+```
+
+## 3. kubectl top
+
+`kubectl top` displays Resource (CPU/Memory/Storage) usage.
+
+`kubectl top` depends on [metrics-server](https://github.com/kubernetes-sigs/metrics-server)
+
+Clarification between [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) and [metrics-server](https://github.com/kubernetes-sigs/metrics-server) 
+
+* kube-state-metrics - kube-state-metrics is a simple service that listens to the Kubernetes API server and generates metrics about the *state of the objects* 
+* metrics-server - metrics server is a scalable, efficient source of *container resource metrics* for Kubernetes built-in autoscaling pipelines.
+
+Horizontal Pod Autoscaler and Vertical Pod Autoscaler also depend on [metrics-server](https://github.com/kubernetes-sigs/metrics-server) for metrics to scale pods as required.
+
+`kubectl top` does not work out of the box on Docker Desktop on Windows
+
+Please follow these steps to enable `kubectl top` on Docker for Desktop on Windows
+
+`kubectl create namespace ns-metrics-server`
+
+`kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml"`
+
+Wait a few minutes for metrics to become available.
+
+Change to a namespace with running pods.
+
+Test that `kubectl top` is working:
+* `kubectl top nodes`
+
+```
+[i725081@surface-2 ~ (docker-desktop:default)]$ kubectl top node
+NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+docker-desktop   815m         10%    2016Mi          15%
+```
+
+* `kubectl top pod`
+
+```
+[i725081@surface-2 ~ (docker-desktop:kube-system)]$ kubectl top pods
+NAME                                     CPU(cores)   MEMORY(bytes)
+coredns-5644d7b6d9-f8c2c                 11m          12Mi
+coredns-5644d7b6d9-fsrfh                 9m           11Mi
+etcd-docker-desktop                      56m          34Mi
+kube-apiserver-docker-desktop            227m         330Mi
+kube-controller-manager-docker-desktop   73m          40Mi
+kube-proxy-b9pgg                         2m           16Mi
+kube-scheduler-docker-desktop            5m           14Mi
+storage-provisioner                      10m          12Mi
+vpnkit-controller                        0m           20Mi
+```
+
+## 4. Kubernetes Web Tools
+
+### 4.1 What is Octant 
+* [Octant](https://github.com/vmware-tanzu/octant) is a web-based highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
+
+### 4.2 Install Octant (Linux)
+```
+cd ~/ && rm -R ~/octant
+cd ~/ && mkdir octant && cd octant
+curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.13.1/octant_0.13.1_Linux-64bit.tar.gz
+tar -xvf octant_0.13.1_Linux-64bit.tar.gz
+sudo mv ./octant_0.13.1_Linux-64bit/octant /usr/local/bin/octant
+```
+
+### Start Octant (Remote Linux Instance)
+
+If Octant is installed local, just run `octant -n <namespace>`
+
+If octant is installed on a remote Linux instance then follow instructions below.
+
+Obtain the external IP (Public IPv4) address of the Linux instance running Octant
+
+If following the microservices-metrics-chaos tutorial use this command 
+`doctl compute droplet list | awk 'FNR == 2 {print $3}'`
+
+Update `.bashrc` will the following lines: 
+```
+cd ~
+echo "export OCTANT_ACCEPTED_HOSTS=<Public IPv4>" >> ~/.bashrc
+echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
+echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
+```
+
+`octant &`
+
+and restart your shell.
+
+Open this URL link to access Octant : `http://<Public IPv4>:8900`
+
+
+## 5. Skaffold
+* [Skaffold](https://skaffold.dev) is a Continuous Delivery capability for Kubernetes
+
+### 5.1 Install Skaffold
+
+```
+cd ~/ && rm -R ~/skaffold
+cd ~/ && mkdir skaffold && cd skaffold
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+sudo install skaffold /usr/local/bin/
+```
+
+## 6. kubectl Tools
+
+### 6. 1 [krew](https://github.com/kubernetes-sigs/krew)
+
+#### What is krew
+* krew is a tool that makes it easy to use kubectl [plugins](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/). 
+* krew helps you discover plugins, install and manage them on your machine. 
+* It is similar to tools like apt, dnf or brew. Today, over 70 kubectl plugins are available on krew.
+
+#### Install krew (Linux) 
+
+```
+(
+  set -x; cd "$(mktemp -d)" &&
+  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v0.3.3/krew.{tar.gz,yaml}" &&
+  tar zxvf krew.tar.gz &&
+  KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
+  "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
+  "$KREW" update
+)
+```
+
+Add $HOME/.krew/bin directory to your PATH environment variable. 
+
+To do this, update your .bashrc and append the following line:
+
+`export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"`
+
+and restart your shell.
+
+Verifying installation
+* Run `kubectl plugin list`
+
+Upgrading krew
+* It can be upgraded like a plugin by running the `kubectl krew upgrade` command.
+
+### 6.2 [kubectl tree](https://github.com/ahmetb/kubectl-tree)
+* kubectl plugin to browse Kubernetes object hierarchies as a tree
+
+#### Install kubectl tree
+```
+kubectl krew install tree
+kubectl tree --help
+```
+
+#### Use kubectl tree
+```
+kubectl tree KIND NAME [flags]
+kubectl tree deployment my-app
+kubectl tree kservice.v1.serving.knative.dev my-app
+```
+
+```
+[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:sock-shop)]# kubectl tree deployments front-end
+NAMESPACE  NAME                                READY  REASON  AGE
+sock-shop  Deployment/front-end                -              46h
+sock-shop  └─ReplicaSet/front-end-5594987df6   -              46h
+sock-shop    ├─Pod/front-end-5594987df6-cg87t  True           46h
+sock-shop    ├─Pod/front-end-5594987df6-jl4pc  True           46h
+sock-shop    ├─Pod/front-end-5594987df6-wg5zg  True           46h
+sock-shop    └─Pod/front-end-5594987df6-xfdws  True           46h
+```
+
+### 6.3 [kube-score](https://github.com/zegl/kube-score)
 
 #### What is kube-score
 * Kubernetes object analysis with recommendations for improved reliability and security
@@ -143,184 +322,6 @@ v1/Service rabbitmq in sock-shop                                              �
 v1/Service shipping in sock-shop                                              ✅
 v1/Service user in sock-shop                                                  ✅
 v1/Service user-db in sock-shop                                               ✅
-```
-
-## kubectl top
-
-`kubectl top` displays Resource (CPU/Memory/Storage) usage.
-
-`kubectl top` depends on [metrics-server](https://github.com/kubernetes-sigs/metrics-server)
-
-Clarification between [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) and [metrics-server](https://github.com/kubernetes-sigs/metrics-server) 
-
-* kube-state-metrics - kube-state-metrics is a simple service that listens to the Kubernetes API server and generates metrics about the *state of the objects* 
-* metrics-server - metrics server is a scalable, efficient source of *container resource metrics* for Kubernetes built-in autoscaling pipelines.
-
-Horizontal Pod Autoscaler and Vertical Pod Autoscaler also depend on [metrics-server](https://github.com/kubernetes-sigs/metrics-server) for metrics to scale pods as required.
-
-`kubectl top` does not work out of the box on Docker Desktop on Windows
-
-Please follow these steps to enable `kubectl top` on Docker for Desktop on Windows
-
-`kubectl create namespace ns-metrics-server`
-
-`kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml"`
-
-Wait a few minutes for metrics to become available.
-
-Change to a namespace with running pods.
-
-Test that `kubectl top` is working:
-* `kubectl top nodes`
-
-```
-[i725081@surface-2 ~ (docker-desktop:default)]$ kubectl top node
-NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
-docker-desktop   815m         10%    2016Mi          15%
-```
-
-* `kubectl top pod`
-
-```
-[i725081@surface-2 ~ (docker-desktop:kube-system)]$ kubectl top pods
-NAME                                     CPU(cores)   MEMORY(bytes)
-coredns-5644d7b6d9-f8c2c                 11m          12Mi
-coredns-5644d7b6d9-fsrfh                 9m           11Mi
-etcd-docker-desktop                      56m          34Mi
-kube-apiserver-docker-desktop            227m         330Mi
-kube-controller-manager-docker-desktop   73m          40Mi
-kube-proxy-b9pgg                         2m           16Mi
-kube-scheduler-docker-desktop            5m           14Mi
-storage-provisioner                      10m          12Mi
-vpnkit-controller                        0m           20Mi
-```
-
-## Kubernetes Web Tools
-
-### What is Octant 
-* [Octant](https://github.com/vmware-tanzu/octant) is a web-based highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
-
-### Install Octant (Linux)
-```
-cd ~/ && rm -R ~/octant
-cd ~/ && mkdir octant && cd octant
-curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.13.1/octant_0.13.1_Linux-64bit.tar.gz
-tar -xvf octant_0.13.1_Linux-64bit.tar.gz
-sudo mv ./octant_0.13.1_Linux-64bit/octant /usr/local/bin/octant
-```
-
-### Start Octant (Remote Linux Instance)
-
-If Octant is installed local, just run `octant -n <namespace>`
-
-If octant is installed on a remote Linux instance then follow instructions below.
-
-Obtain the external IP (Public IPv4) address of the Linux instance running Octant
-
-If following the microservices-metrics-chaos tutorial use this command 
-`doctl compute droplet list | awk 'FNR == 2 {print $3}'`
-
-Update `.bashrc` will the following lines: 
-```
-cd ~
-echo "export OCTANT_ACCEPTED_HOSTS=<Public IPv4>" >> ~/.bashrc
-echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
-echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
-```
-
-`octant &`
-
-and restart your shell.
-
-Open this URL link to access Octant : `http://<Public IPv4>:8900`
-
-## Helm 3
-* [Helm](https://helm.sh/) is a package manager for Kubernetes
-
-### Install Helm 3
-
-```
-cd ~/ && rm -R ~/helm-3
-cd ~/ && mkdir helm-3 && cd helm-3
-wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
-tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
-sudo mv linux-amd64/helm /usr/local/bin/helm
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
-```
-
-## Skaffold
-* [Skaffold](https://skaffold.dev) is a Continuous Delivery capability for Kubernetes
-
-### Install Skaffold
-
-```
-cd ~/ && rm -R ~/skaffold
-cd ~/ && mkdir skaffold && cd skaffold
-curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
-sudo install skaffold /usr/local/bin/
-```
-
-## kubectl Tools
-
-### [krew](https://github.com/kubernetes-sigs/krew)
-
-#### What is krew
-* krew is a tool that makes it easy to use kubectl [plugins](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/). 
-* krew helps you discover plugins, install and manage them on your machine. 
-* It is similar to tools like apt, dnf or brew. Today, over 70 kubectl plugins are available on krew.
-
-#### Install krew (Linux) 
-
-```
-(
-  set -x; cd "$(mktemp -d)" &&
-  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v0.3.3/krew.{tar.gz,yaml}" &&
-  tar zxvf krew.tar.gz &&
-  KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
-  "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
-  "$KREW" update
-)
-```
-
-Add $HOME/.krew/bin directory to your PATH environment variable. 
-
-To do this, update your .bashrc and append the following line:
-
-`export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"`
-
-and restart your shell.
-
-Verifying installation
-* Run `kubectl plugin list`
-
-Upgrading krew
-* It can be upgraded like a plugin by running the `kubectl krew upgrade` command.
-
-### [kubectl tree](https://github.com/ahmetb/kubectl-tree)
-* kubectl plugin to browse Kubernetes object hierarchies as a tree
-
-#### Install kubectl tree
-```
-kubectl krew install tree
-kubectl tree --help
-```
-
-#### Use kubectl tree
-```
-kubectl tree KIND NAME [flags]
-kubectl tree deployment my-app
-kubectl tree kservice.v1.serving.knative.dev my-app
-```
-
-```
-[root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:sock-shop)]# kubectl tree deployments front-end
-NAMESPACE  NAME                                READY  REASON  AGE
-sock-shop  Deployment/front-end                -              46h
-sock-shop  └─ReplicaSet/front-end-5594987df6   -              46h
-sock-shop    ├─Pod/front-end-5594987df6-cg87t  True           46h
-sock-shop    ├─Pod/front-end-5594987df6-jl4pc  True           46h
-sock-shop    ├─Pod/front-end-5594987df6-wg5zg  True           46h
-sock-shop    └─Pod/front-end-5594987df6-xfdws  True           46h
 ```
 
 *End of Section*
