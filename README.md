@@ -17,9 +17,9 @@
   * 2.1 Install Helm 3
 3. kubectl top
 4. Kubernetes Web Tools
-  * 4.1 What is Octent
-  * 4.2 Install Octent
-  * 4.3 Start Octent
+  * 4.1 What is Octant
+  * 4.2 Install Octant
+  * 4.3 Start Octant
 5. Skaffold
   * 5.1 Install Skaffold
 6. kubectl Tools 
@@ -172,12 +172,16 @@ echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
 echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
 ```
 
-`octant &`
+And reinitialize your shell with `. ~/.bashrc`
 
-and restart your shell.
+Open another shell and run `octant &`
 
 Open this URL link to access Octant : `http://<Public IPv4>:8900`
 
+
+```diff
+- All tool after this point are optional, all tools above this point are required for the tutorials -
+```
 
 ## 5. Skaffold
 * [Skaffold](https://skaffold.dev) is a Continuous Delivery capability for Kubernetes
