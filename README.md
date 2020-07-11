@@ -9,10 +9,11 @@
 ## Table of Contents
 
 1. Kubernetes Command Line Tools
-  * 1.1 kubectl
-  * 1.2 kubectx
-  * 1.2 kubens
-  * 1.3 kube-ps1
+  * 1.1 What is `kubectl`
+  * 1.2 Install `kubectl`
+  * 1.3 kubectx
+  * 1.3 kubens
+  * 1.4 kube-ps1
 2. Helm 3 
   * 2.1 What is Helm?
   * 2.2 Install Helm 3
@@ -33,7 +34,16 @@
 
 ## 1. Kubernetes Command Line Tools 
 
-### 1.1 Install kubectl
+### 1.1 What is `kubectl`
+
+`kubectl` is a command line tool used to interact with the `digital-ocean-cluster` Kubernetes clusters.
+
+In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
+
+![image](https://user-images.githubusercontent.com/18049790/65854426-30332f00-e38f-11e9-89a9-b19cc005db91.png)
+Credit to [What is Kubernetes](https://www.learnitguide.net/2018/08/what-is-kubernetes-learn-kubernetes.html)
+
+### 1.2 Install `kubectl`
 ```
 cd ~/ && rm -R ~/kubectl
 cd ~/ && mkdir kubectl && cd kubectl
@@ -42,11 +52,11 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
-### 1.2 [kubectx & kubens](https://github.com/ahmetb/kubectx) 
-* kubectx - switch between clusters back and forth
-* kubens - switch between Kubernetes namespaces smoothly
+### 1.3 [kubectx & kubens](https://github.com/ahmetb/kubectx) 
+* `kubectx` - switch between clusters back and forth
+* `kubens` - switch between Kubernetes namespaces smoothly
 
-#### Install kubectx and kubens
+#### Install `kubectx` and `kubens`
 
 `sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx`
 
@@ -55,7 +65,7 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 `sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens`
 
 
-### 1.3 [kube-ps1](https://github.com/jonmosco/kube-ps1)
+### 1.4 [kube-ps1](https://github.com/jonmosco/kube-ps1)
 * kube-ps1 - Kubernetes prompt info for bash
 
 #### Install kube-ps1
