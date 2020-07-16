@@ -181,13 +181,15 @@ If octant is installed on a remote Linux instance then follow instructions below
 
 Obtain the external IP (Public IPv4) address of the Linux instance running Octant
 
-If following the microservices-metrics-chaos tutorial use this command 
-`doctl compute droplet list | awk 'FNR == 2 {print $3}'`
+If following the [microservices-metrics-chaos](https://github.com/jamesbuckett/microservices-metrics-chaos) tutorial use this command 
+```
+DROPLET_ADDR=$(doctl compute droplet list | awk 'FNR == 2 {print $3}')
+export $DROPLET_ADDR
+```
 
-Update `.bashrc` will the following lines: 
 ```
 cd ~
-echo "export OCTANT_ACCEPTED_HOSTS=<Public IPv4>" >> ~/.bashrc
+echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
 echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
 ```
