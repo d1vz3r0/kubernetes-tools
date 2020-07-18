@@ -195,10 +195,14 @@ echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
 echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
 . ~/.bashrc
-sh -c "octant &"
 clear
 echo " "
 echo "The URL for Octant is: http://$DROPLET_ADDR:8900"
+```
+
+In a new terminal start octant
+```
+sh -c "octant &"
 ```
 
 ```diff
