@@ -194,16 +194,12 @@ echo "export DROPLET_ADDR=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
 echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
-echo "http://$DROPLET_ADDR:8900"
 . ~/.bashrc
+sh -c "octant &"
+clear
+echo " "
+echo "The URL for Octant is: http://$DROPLET_ADDR:8900"
 ```
-
-And reinitialize your shell with `. ~/.bashrc`
-
-Open another shell and run `octant &`
-
-Open this URL link to access Octant : `http://$DROPLET_ADDR:8900`
-
 
 ```diff
 - All tool after this point are optional, all tools above this point are required for the tutorials -
