@@ -77,7 +77,7 @@ Source the kube-ps1.sh in your ~/.bashrc
 
 To do this, update your .bashrc and append the following lines:
 
-vi ~/.bashrc
+`vi ~/.bashrc`
 ```
 KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
