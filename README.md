@@ -77,6 +77,7 @@ Source the kube-ps1.sh in your ~/.bashrc
 
 To do this, update your .bashrc and append the following lines:
 
+vi ~/.bashrc
 ```
 KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
@@ -193,7 +194,8 @@ echo "export DROPLET_ADDR=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
 echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
-echo "URL to access Octant is located here: "  `http://$DROPLET_ADDR:8900`
+echo "http://$DROPLET_ADDR:8900"
+. ~/.bashrc
 ```
 
 And reinitialize your shell with `. ~/.bashrc`
