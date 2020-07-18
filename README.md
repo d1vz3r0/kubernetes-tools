@@ -198,7 +198,7 @@ And reinitialize your shell with `. ~/.bashrc`
 
 Open another shell and run `octant &`
 
-Open this URL link to access Octant : `http://<Public IPv4>:8900`
+Open this URL link to access Octant : `http://$DROPLET_ADDR:8900`
 
 
 ```diff
