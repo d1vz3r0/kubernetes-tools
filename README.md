@@ -187,7 +187,7 @@ If you are following the [microservices-metrics-chaos](https://github.com/jamesb
 ```
 cd ~
 DROPLET_ADDR=$(doctl compute droplet list | awk 'FNR == 2 {print $3}')
-export $DROPLET_ADDR
+export DROPLET_ADDR
 echo "export DROPLET_ADDR=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
 echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
