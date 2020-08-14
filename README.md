@@ -100,8 +100,8 @@ You can check if your terminal font supports the Kubernetes symbol with this com
 ```
 cd ~/ && rm -R ~/helm-3
 cd ~/ && mkdir helm-3 && cd helm-3
-wget https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
-tar -zxvf helm-v3.2.4-linux-amd64.tar.gz
+wget https://get.helm.sh/helm-v3.3.0-linux-amd64.tar.gz
+tar -zxvf helm-v3.3.0-linux-amd64.tar.gz
 sudo mv linux-amd64/helm /usr/local/bin/helm
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 ```
