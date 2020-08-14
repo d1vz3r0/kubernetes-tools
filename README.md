@@ -169,9 +169,9 @@ vpnkit-controller                        0m           20Mi
 ```
 cd ~/ && rm -R ~/octant
 cd ~/ && mkdir octant && cd octant
-curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.14.0/octant_0.14.0_Linux-64bit.tar.gz
-tar -xvf octant_0.14.0_Linux-64bit.tar.gz
-sudo mv ./octant_0.14.0_Linux-64bit/octant /usr/local/bin/octant
+curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.15.0/octant_0.15.0_Linux-64bit.tar.gz
+tar -xvf octant_0.15.0_Linux-64bit.tar.gz
+sudo mv ./octant_0.15.0_Linux-64bit/octant /usr/local/bin/octant
 ```
 
 ### Start Octant (Remote Linux Instance)
