@@ -31,6 +31,9 @@
   * 6.1 krew
   * 6.2 kubectl tree (krew plugin)
   * 6.3 kube-score
+ 7. Knative CLI
+  * 7.1 What is Knative CLI (`kn`)
+  * 7.2 Install `kn` 
 
 ## 1. Kubernetes Command Line Tools 
 
@@ -349,6 +352,21 @@ v1/Service rabbitmq in sock-shop                                              �
 v1/Service shipping in sock-shop                                              ✅
 v1/Service user in sock-shop                                                  ✅
 v1/Service user-db in sock-shop                                               ✅
+```
+
+## 7. Knative Command Line (Under Construction)
+
+### 7.1 What is `kn`?
+
+`kn` is a command line tool used to interact with any Kubernetes clusters.
+
+### 7.2 Install `kn`
+```
+cd ~/ && rm -R ~/kn
+cd ~/ && mkdir kn && cd kn
+curl -LO https://github.com/knative/client/releases/tag/v0.17.0 /bin/linux/amd64/kn
+chmod +x ./kn
+sudo mv ./kn /usr/local/bin/kn
 ```
 
 *End of Section*
