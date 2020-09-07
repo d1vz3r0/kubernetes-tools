@@ -48,13 +48,6 @@ cd ~/ && rm -R ~/locust
 cd ~/ && mkdir locust && cd locust
 wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/locustfile.py
 
-# Update .bashrc
-cd ~
-echo "alias cls='clear'" >> ~/.bashrc
-echo "alias k='kubectl'" >> ~/.bashrc
-echo "alias kga='kubectl get all'" >> ~/.bashrc
-. ~/.bashrc
-
 reboot
 
 # End of Script
