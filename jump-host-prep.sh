@@ -12,6 +12,12 @@ curl -LO https://github.com/digitalocean/doctl/releases/download/v1.45.1/doctl-1
 tar -xvf doctl-1.45.1-linux-amd64.tar.gz
 sudo mv ~/doctl/doctl /usr/local/bin
 
+# Update .bashrc
+cd ~
+echo "alias cls='clear'" >> ~/.bashrc
+echo "alias k='kubectl'" >> ~/.bashrc
+echo "alias kga='kubectl get all'" >> ~/.bashrc
+
 reboot
 
 # End of Script
