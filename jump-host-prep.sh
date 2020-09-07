@@ -50,21 +50,10 @@ wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/
 
 # Update .bashrc
 cd ~
-echo 'source <(kubectl completion bash)' >>~/.bashrc
 echo "alias cls='clear'" >> ~/.bashrc
 echo "alias k='kubectl'" >> ~/.bashrc
 echo "alias kga='kubectl get all'" >> ~/.bashrc
-echo "KUBE_PS1_SYMBOL_ENABLE=false" >>~/.bashrc
-echo "source /opt/kube-ps1/kube-ps1.sh" >>~/.bashrc
-echo "PS1='[\u@\h \w $(kube_ps1)]\$ '" >> ~/.bashrc
-echo "export DROPLET_ADDR=$DROPLET_ADDR" >> ~/.bashrc
-echo "export OCTANT_ACCEPTED_HOSTS=$DROPLET_ADDR" >> ~/.bashrc
-echo "export OCTANT_DISABLE_OPEN_BROWSER=1" >> ~/.bashrc
-echo "export OCTANT_LISTENER_ADDR=0.0.0.0:8900" >> ~/.bashrc
 . ~/.bashrc
-
-echo "Start Octant with this command in a separate shell: `octant &` " >> /etc/motd.tail
-echo "The URL for Octant is: http://$DROPLET_ADDR:8900" >> /etc/motd.tail
 
 reboot
 
