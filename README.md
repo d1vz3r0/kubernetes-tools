@@ -140,7 +140,7 @@ Wait a few minutes for metrics to become available.
 Change to a namespace with running pods.
 
 Test that `kubectl top` is working:
-* `kubectl top nodes`
+* `kubectl top nodes` or `watch -n1 kubectl top nodes`
 
 ```
 [i725081@surface-2 ~ (docker-desktop:default)]$ kubectl top node
