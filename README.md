@@ -82,6 +82,7 @@ To do this, update your .bashrc and append the following lines:
 
 `vi ~/.bashrc`
 ```
+source <(kubectl completion bash)
 KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
 PS1='[\u@\h \w $(kube_ps1)]\$ '
