@@ -131,9 +131,7 @@ Horizontal Pod Autoscaler and Vertical Pod Autoscaler also depend on [metrics-se
 
 Please follow these steps to enable `kubectl top` on Docker for Desktop on Windows
 
-`kubectl create namespace ns-metrics-server`
-
-`kubectl apply -f "https://raw.githubusercontent.com/jamesbuckett/kubernetes-tools/master/components.yaml"`
+`kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml`
 
 Wait a few minutes for metrics to become available.
 
