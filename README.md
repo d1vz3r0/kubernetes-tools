@@ -5,6 +5,7 @@
 ## Disclaimer
 * Opinions expressed here are solely my own and do not express the views or opinions of JPMorgan Chase.
 * Any third-party trademarks are the intellectual property of their respective owners and any mention herein is for referential purposes only. 
+<br />
 
 ## Table of Contents
 
@@ -34,6 +35,7 @@
  7. Knative CLI
   * 7.1 What is Knative CLI (`kn`)
   * 7.2 Install `kn` 
+<br />
 
 ## 1. Kubernetes Command Line Tools 
 
@@ -45,15 +47,17 @@ In the diagram below you see `kubectl` interacts with the Kubernetes API Server.
 
 ![image](https://user-images.githubusercontent.com/18049790/65854426-30332f00-e38f-11e9-89a9-b19cc005db91.png)
 Credit to [What is Kubernetes](https://www.learnitguide.net/2018/08/what-is-kubernetes-learn-kubernetes.html)
+<br />
 
 ### 1.2 Install kubectl
-```
+```bash
 cd ~/ && rm -R ~/kubectl
 cd ~/ && mkdir kubectl && cd kubectl
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 ```
+<br />
 
 ### 1.3 [kubectx & kubens](https://github.com/ahmetb/kubectx) 
 * `kubectx` - switch between clusters back and forth
@@ -66,13 +70,13 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 `sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx`
 
 `sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens`
-
+<br />
 
 ### 1.4 [kube-ps1](https://github.com/jonmosco/kube-ps1)
 * kube-ps1 - Kubernetes prompt info for bash
 
 #### Install kube-ps1
-```
+```bash
 sudo git clone https://github.com/jonmosco/kube-ps1.git /opt/kube-ps1
 ```
 
@@ -81,7 +85,8 @@ Source the kube-ps1.sh in your ~/.bashrc
 To do this, update your .bashrc and append the following lines:
 
 `vi ~/.bashrc`
-```
+
+```console
 source <(kubectl completion bash)
 KUBE_PS1_SYMBOL_ENABLE=false
 source /opt/kube-ps1/kube-ps1.sh
@@ -93,15 +98,17 @@ And reinitialize your shell with `. ~/.bashrc`
 I put this environment variable in `KUBE_PS1_SYMBOL_ENABLE=false` as the Kubernetes symbol did not display correctly using my font.
 
 You can check if your terminal font supports the Kubernetes symbol with this command `echo $'\u2388'`
+<br />
 
 ## 2. Helm 3
 
 ### 2.1 What is Helm?
 * [Helm](https://helm.sh/) is a package manager for Kubernetes
+<br />
 
 ### 2.2 Install Helm 3
 
-```
+```bash
 cd ~/ && rm -R ~/helm-3
 cd ~/ && mkdir helm-3 && cd helm-3
 wget https://get.helm.sh/helm-v3.3.0-linux-amd64.tar.gz
@@ -126,6 +133,7 @@ Clarification between [kube-state-metrics](https://github.com/kubernetes/kube-st
 Horizontal Pod Autoscaler and Vertical Pod Autoscaler also depend on [metrics-server](https://github.com/kubernetes-sigs/metrics-server) for metrics to scale pods as required.
 
 `kubectl top` does not work out of the box on Docker Desktop on Windows
+<br />
 
 ### 3.2 Install kubectl top
 
@@ -140,7 +148,7 @@ Change to a namespace with running pods.
 Test that `kubectl top` is working:
 * `kubectl top nodes` or `watch -n1 kubectl top nodes`
 
-```
+```console
 [i725081@surface-2 ~ (docker-desktop:default)]$ kubectl top node
 NAME             CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
 docker-desktop   815m         10%    2016Mi          15%
@@ -148,7 +156,7 @@ docker-desktop   815m         10%    2016Mi          15%
 
 * `kubectl top pod`
 
-```
+```console
 [i725081@surface-2 ~ (docker-desktop:kube-system)]$ kubectl top pods
 NAME                                     CPU(cores)   MEMORY(bytes)
 coredns-5644d7b6d9-f8c2c                 11m          12Mi
@@ -161,20 +169,23 @@ kube-scheduler-docker-desktop            5m           14Mi
 storage-provisioner                      10m          12Mi
 vpnkit-controller                        0m           20Mi
 ```
+<br />
 
 ## 4. Kubernetes Web Tools
 
 ### 4.1 What is Octant 
 * [Octant](https://github.com/vmware-tanzu/octant) is a web-based highly extensible platform for developers to better understand the complexity of Kubernetes clusters.
+<br />
 
 ### 4.2 Install Octant (Linux)
-```
+```bash
 cd ~/ && rm -R ~/octant
 cd ~/ && mkdir octant && cd octant
 curl -LO https://github.com/vmware-tanzu/octant/releases/download/v0.16.1/octant_0.16.1_Linux-64bit.tar.gz
 tar -xvf octant_0.16.1_Linux-64bit.tar.gz
 sudo mv ./octant_0.16.1_Linux-64bit/octant /usr/local/bin/octant
 ```
+<br />
 
 ### Start Octant (Remote Linux Instance)
 
@@ -186,7 +197,7 @@ Obtain the external IP (Public IPv4) address of the Linux instance running Octan
 
 If you are following the [microservices-metrics-chaos](https://github.com/jamesbuckett/microservices-metrics-chaos) tutorial use this command to export the Public IP of `digital-ocean-droplet`
 
-```
+```console
 cd ~
 DROPLET_ADDR=$(doctl compute droplet list | awk 'FNR == 2 {print $3}')
 export DROPLET_ADDR
@@ -200,27 +211,30 @@ printf "%s\n"  "The URL for Octant is: http://$DROPLET_ADDR:8900"
 ```
 
 In a new terminal start Octant, to prevent Octant flooding the terminal with messages:
-```
+```bash
 octant &
 ```
 
 ```diff
 - All tool after this point are optional, all tools above this point are required for the tutorials -
 ```
+<br />
 
 ## 5. Skaffold
 
 ### 5.1 What is Skaffold
 * [Skaffold](https://skaffold.dev) is a Continuous Delivery capability for Kubernetes
+<br />
 
 ### 5.2 Install Skaffold
 
-```
+```bash
 cd ~/ && rm -R ~/skaffold
 cd ~/ && mkdir skaffold && cd skaffold
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 sudo install skaffold /usr/local/bin/
 ```
+<br />
 
 ## 6. Optional Kubernetes Tools
 
@@ -230,10 +244,11 @@ sudo install skaffold /usr/local/bin/
 * krew is a tool that makes it easy to use kubectl [plugins](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/). 
 * krew helps you discover plugins, install and manage them on your machine. 
 * It is similar to tools like apt, dnf or brew. Today, over 70 kubectl plugins are available on krew.
+<br />
 
 #### Install krew (Linux) 
 
-```
+```bash
 (
   set -x; cd "$(mktemp -d)" &&
   curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v0.3.3/krew.{tar.gz,yaml}" &&
@@ -257,24 +272,25 @@ Verifying installation
 
 Upgrading krew
 * It can be upgraded like a plugin by running the `kubectl krew upgrade` command.
+<br />
 
 ### 6.2 [kubectl tree](https://github.com/ahmetb/kubectl-tree)
 * kubectl plugin to browse Kubernetes object hierarchies as a tree
 
 #### Install kubectl tree
-```
+```bash
 kubectl krew install tree
 kubectl tree --help
 ```
 
 #### Use kubectl tree
-```
+```bash
 kubectl tree KIND NAME [flags]
 kubectl tree deployment my-app
 kubectl tree kservice.v1.serving.knative.dev my-app
 ```
 
-```
+```console
 [root@digital-ocean-droplet ~ (do-sgp1-digital-ocean-cluster:sock-shop)]# kubectl tree deployments front-end
 NAMESPACE  NAME                                READY  REASON  AGE
 sock-shop  Deployment/front-end                -              46h
@@ -284,27 +300,29 @@ sock-shop    ├─Pod/front-end-5594987df6-jl4pc  True           46h
 sock-shop    ├─Pod/front-end-5594987df6-wg5zg  True           46h
 sock-shop    └─Pod/front-end-5594987df6-xfdws  True           46h
 ```
+<br />
 
 ### 6.3 [kube-score](https://github.com/zegl/kube-score)
 
 #### What is kube-score
 * Kubernetes object analysis with recommendations for improved reliability and security
+<br />
 
 #### Install kube-score
-```
+```bash
 cd ~/ && mkdir kube-score && cd kube-score
 curl -LO https://github.com/zegl/kube-score/releases/download/v1.4.0/kube-score_1.4.0_linux_amd64.tar.gz
 tar -xvf kube-score_1.4.0_linux_amd64.tar.gz
 sudo mv ~/kube-score/kube-score /usr/local/bin
 ```
 
-```
+```bash
 wget https://raw.githubusercontent.com/jamesbuckett/microservices-metrics-chaos/master/complete-demo.yaml
 
 kube-score score complete-demo.yaml
 ```
 
-```
+```console
 extensions/v1beta1/Deployment carts in sock-shop                              💥
     [WARNING] Stable version
         · The apiVersion and kind extensions/v1beta1/Deployment is deprecated
@@ -352,15 +370,17 @@ v1/Service shipping in sock-shop                                              �
 v1/Service user in sock-shop                                                  ✅
 v1/Service user-db in sock-shop                                               ✅
 ```
+<br />
 
 ## 7. Knative Command Line (Under Construction)
 
 ### 7.1 What is `kn`?
 
 `kn` is a command line tool used to interact with any Kubernetes clusters.
+<br />
 
 ### 7.2 Install `kn`
-```
+```bash
 cd ~/ && rm -R ~/kn
 cd ~/ && mkdir kn && cd kn
 curl -LO https://github.com/knative/client/releases/tag/v0.17.0 /bin/linux/amd64/kn
